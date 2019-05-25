@@ -1,21 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from threading import Timer, Lock
-from .msfrpc import ShellSession
-
-__author__ = 'Nadeem Douba'
-__copyright__ = 'Copyright 2012, PyMetasploit Project'
-__credits__ = []
-
-__license__ = 'GPL'
-__version__ = '0.3'
-__maintainer__ = 'Nadeem Douba'
-__email__ = 'ndouba@cygnos.com'
-__status__ = 'Development'
-
-__all__ = [
-    'MsfRpcConsole'
-]
+from pymetasploit3.msfrpc import ShellSession
 
 
 class MsfRpcConsoleType:
@@ -26,7 +12,7 @@ class MsfRpcConsoleType:
 
 class MsfRpcConsole(object):
 
-    def __init__(self, rpc, sessionid=None, cb=None):
+    def __init__(self, rpc, token=None, cb=None):
         """
         Emulates the msfconsole in msf except over RPC.
 
@@ -39,8 +25,8 @@ class MsfRpcConsole(object):
 
         self.callback = cb
 
-        if sessionid is not None:
-            self.console = rpc.sessions.session(sessionid)
+        if token is not None:
+            self.console = rpc.sessions.session(token)
             self.type_ = MsfRpcConsoleType.Shell if isinstance(self.console, ShellSession) else MsfRpcConsoleType.Meterpreter
             self.prompt = '>>> '
             self.callback(dict(data='', prompt=self.prompt))

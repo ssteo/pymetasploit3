@@ -1,22 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from code import InteractiveConsole
 from atexit import register
 from os import path
 import readline
 
-from metasploit.msfrpc import MsfRpcClient, MsfRpcError
-from metasploit.utils import parseargs
-
-__author__ = 'Nadeem Douba'
-__copyright__ = 'Copyright 2012, PyMetasploit Project'
-__credits__ = []
-
-__license__ = 'GPL'
-__version__ = '0.1'
-__maintainer__ = 'Nadeem Douba'
-__email__ = 'ndouba@cygnos.com'
-__status__ = 'Development'
+from pymetasploit3.msfrpc import MsfRpcClient, MsfRpcError
+from pymetasploit3.utils import parseargs
 
 
 class MsfRpc(InteractiveConsole):

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from setuptools import setup, find_packages
 from os import path
@@ -9,22 +9,22 @@ def read(fname):
 
 
 setup(
-    name='pymetasploit',
-    author='Nadeem Douba',
-    version='1.1',
-    author_email='ndouba@gmail.com',
+    name='pymetasploit3',
+    author='Dan McInerney',
+    version='1.0',
+    author_email='danhmcinerney@gmail.com',
     description='A full-fledged msfrpc library for Metasploit framework.',
     license='GPL',
-    packages=find_packages('src'),
-    package_dir={'': 'src'},
+    packages=find_packages(exclude='tests'),
     scripts=[
-        'src/pymsfconsole.py',
-        'src/pymsfrpc.py'
+        'pymetasploit3/scripts/pymsfconsole.py',
+        'pymetasploit3/scripts/pymsfrpc.py'
     ],
     install_requires=[
-        'msgpack-python>=0.1.12'
+        'msgpack',
+        'requests'
     ],
-    url='https://github.com/allfro/pymetasploit',
-    download_url='https://github.com/allfro/pymetasploit/zipball/master',
-    long_description=read('README')
+    url='https://github.com/DanMcInerney/pymetasploit3',
+    download_url='https://github.com/DanMcInerney/pymetasploit3/zipball/master',
+    long_description=read('README.md')
 )

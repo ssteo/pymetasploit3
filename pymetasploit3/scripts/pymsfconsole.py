@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from code import InteractiveConsole
 from atexit import register
@@ -6,19 +6,9 @@ from sys import stdout
 from os import path
 import readline
 
-from metasploit.msfrpc import MsfRpcClient, MsfRpcError
-from metasploit.msfconsole import MsfRpcConsole
-from metasploit.utils import parseargs
-
-__author__ = 'Nadeem Douba'
-__copyright__ = 'Copyright 2012, PyMetasploit Project'
-__credits__ = []
-
-__license__ = 'GPL'
-__version__ = '0.1'
-__maintainer__ = 'Nadeem Douba'
-__email__ = 'ndouba@cygnos.com'
-__status__ = 'Development'
+from pymetasploit3.msfrpc import MsfRpcClient, MsfRpcError
+from pymetasploit3.msfconsole import MsfRpcConsole
+from pymetasploit3.utils import parseargs
 
 
 class MsfConsole(InteractiveConsole):
@@ -45,7 +35,7 @@ class MsfConsole(InteractiveConsole):
     def save_history(self, histfile):
         readline.write_history_file(histfile)
         del self.client
-        print 'bye!'
+        print('bye!')
 
     def callback(self, d):
         stdout.write('\n%s' % d['data'])
@@ -61,7 +51,7 @@ if __name__ == '__main__':
     try:
         m = MsfConsole(o.__dict__.pop('password'), **o.__dict__)
         m.interact('')
-    except MsfRpcError, m:
-        print str(m)
+    except MsfRpcError as m:
+        print(str(m))
         exit(-1)
     exit(0)
